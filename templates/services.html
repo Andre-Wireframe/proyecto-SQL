@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} Servicios {% endblock %}
+
+{% block content %}
+
+<div class="form-add">
+    <form method="POST">
+        <h2>Agregar servicio</h2>
+        <label for="nombre">Nombre del servicio</label><br>
+        <input type="text" name="nombre" id="nombre" required><br>
+
+        <label for="costo">Costo del servicio</label><br>
+        <input type="text" name="costo" id="costo" required><br>
+
+        <label for="periodo">Perdido de pago</label><br>
+        <input type="text" name="periodo" id="periodo" required><br>
+
+        <label for="type">Tipo de servicio</label><br>
+        <select name="type" id="type" required>
+            <option value="1ra Necesidad">1ra Necesidad</option>
+            <option value="2da Necesidad">2da Necesidad</option>
+            <option value="3ra Necesidad">3ra Necesidad</option>
+        </select>
+
+        <div class="botones">
+            <button class="button-generic" type="submit">Agregar</button>
+            <a class="button-generic" href="{{ url_for('index') }}">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
