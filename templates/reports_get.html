@@ -1,1 +1,35 @@
 {% extends "base.html" %}
+
+{% block title %} Servicios {% endblock %}
+
+{% block content %}
+
+<header>
+    <div class="hero">
+        <h1>Reportes</h1>
+        <h2>Cecytos Web Services</h2>
+    </div>
+</header>
+
+<section class="bocations">
+{% for c in reports %}
+
+    <div class="zone">
+        <h4>{{ c[2] }}</h4>
+        <p>
+            Descripcion: {{ c[5] }}
+        </p>
+        <ul>
+            <li>Usuario: {{ c[1] }}</li>
+            <li>Direccion: {{ c[3] }}</li>
+            <li>Urgencia: {{ c[4] }}</li>
+        </ul><br>
+        <a href="{{ url_for('reports_mod', id=c[0]) }}">Modificar</a>
+        <a href="{{ url_for('reports_del', id=c[0]) }}">Eliminar</a>
+        <br>
+    </div>
+
+{% endfor %}
+</section>
+
+{% endblock %}

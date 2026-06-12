@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_mysqldb import MySQL
 from flask_login import login_user, logout_user, UserMixin, login_required, LoginManager, current_user
 import bcrypt
@@ -10,14 +10,14 @@ def login_func(username, password):
     user = cursor.fetchone()
 
     if not user:
-        return "no_usr"
+        return False
     
     if bcrypt.checkpw(password.encode("utf-8"), user[2].encode("utf-8")):
         login_user(User(user[0], user[1]))
         return True
     
     else:
-        return "no_pass"
+        return False
 
 def singin_func(username, password, password2, edad, phone):
     cursor = mysql.connection.cursor()
@@ -74,13 +74,25 @@ def add_report(servicio, direccion, urgencia, descripcion):
 
 def get_services():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT id, nombre FROM servicios;")
+    cursor.execute("SELECT * FROM servicios;")
  
     return cursor.fetchall()
 
 def get_reports():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM reportes;")
+    cursor.execute("""
+        SELECT
+            rp.id,
+            us.nombre,
+            se.nombre,
+            rp.direccion,
+            rp.urgencia,
+            rp.descripcion
+        FROM reportes rp
+        LEFT JOIN usuarios us ON rp.usuario = us.id
+        LEFT JOIN servicios se ON rp.servicio = se.id;
+        
+    """)
 
     return cursor.fetchall()
 
@@ -130,7 +142,11 @@ def login():
         password = request.form.get("password")
 
         if login_func(name, password):
+            print("succses")
             return redirect(url_for("index"))
+        
+        else:
+            flash("Los datos ingresados no son correctos", "error")
     
     return render_template("login.html")
 
@@ -146,7 +162,17 @@ def singin():
         if singin_func(name, password, password2, edad, phone):
             return redirect(url_for("index"))
         
+        else:
+            flash("Error interno del servidor", "error")
+        
     return render_template("singin.html")
+
+@app.route("/logout/")
+def logout():
+    logout_user()
+    flash("La sesion fue cerrada exitosamente", "success")
+
+    return redirect(url_for("index"))
 
 @app.route("/services/", methods=["GET", "POST"])
 @login_required
@@ -158,7 +184,8 @@ def services():
         type = request.form.get("type")
 
         if add_service(nombre, costo, periodo, type):
-            return redirect(url_for("index"))
+            flash("Servicio agregado exitosamente", "success")
+            return redirect(url_for("services_get"))
 
     return render_template("services.html")
 
@@ -176,9 +203,18 @@ def reports():
         descripcion = request.form.get("descripcion")
 
         if add_report(servicio, direccion, urgencia, descripcion):
-            return redirect(url_for("index"))
+            flash("Reporte agregado exitosamente", "success")
+            return redirect(url_for("reports_get"))
     
     return render_template("reports.html", **context)
+
+@app.route("/services-get/", methods = ["GET"])
+@login_required
+def services_get():
+    context = {
+        "services" : get_services()
+    }
+    return render_template("services_get.html", **context)
 
 @app.route("/reports-get/", methods = ["GET"])
 @login_required
@@ -186,7 +222,35 @@ def reports_get():
     context = {
         "reports" : get_reports()
     }
-    return render_template("", **context)
+    return render_template("reports_get.html", **context)
+
+@app.route("/reports-del/<id>/")
+@login_required
+def reports_del(id):
+    cursor = mysql.connection.cursor()
+    cursor.execute("""
+        DELETE FROM reportes
+        WHERE id = %s;
+    """, (id,))
+
+    mysql.connection.commit()
+
+    flash("Reporte eliminado con exito", "success")
+    return redirect(url_for("reports_get"))
+
+@app.route("/reports-mod/<id>/")
+@login_required
+def reports_mod(id):
+    if request.method == "POST":
+        servicio = request.form.get("servicio")
+        direccion = request.form.get("direccion")
+        urgencia = request.form.get("urgencia")
+        descripcion = request.form.get("descripcion")
+
+    cursor = mysql.connection.cursor()
+    cursor.execute()
+    
+
 
 # Server run
 if __name__ == "__main__":

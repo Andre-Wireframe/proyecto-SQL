@@ -1,22 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %} Servicios {% endblock %}
+{% block extra_css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"> {% endblock %}
+
+{% block title %} Inicio de Sesion {% endblock %}
 
 {% block content %}
 
-<div class="form-add">
-    <form method="POST">
-        <label for="username">Nombre de usuario</label><br>
-        <input type="text" name="username" id="username" required><br>
+<main>
+    <div class="triple-back">
+        <div class="doble-back">
+            <form method="POST">
+                <h3>Ingrese sus credenciales</h3>
+                <div>
+                    <label for="username">Nombre de usuario</label><br>
+                    <input type="text" name="username" id="log-username" required><br><br>
 
-        <label for="password">Contraseña</label><br>
-        <input type="text" name="password" id="password" required><br>
+                    <label for="password">Contraseña</label><br>
+                    <input type="password" name="password" id="log-password" required><br><br>
 
-        <div class="botones">
-            <button class="button-generic" type="submit">Agregar</button>
-            <a class="button-generic" href="{{ url_for('index') }}">Cancelar</a>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="button-1">Enviar</button>
+                    <a href="{{ url_for('index') }}" class="button-1">Cancelar</a>
+                </div>
+                <a class="link" href="{{ url_for('singin') }}">Si no tienes cuenta da click aquí</a>
+            </form>
         </div>
-    </form>
-</div>
+    </div>
+</main>
 
 {% endblock %}

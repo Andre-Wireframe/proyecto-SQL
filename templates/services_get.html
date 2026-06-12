@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} Servicios {% endblock %}
+
+{% block content %}
+
+<header>
+    <div class="hero">
+        <h1>Services</h1>
+        <h2>Cecytos Web Services</h2>
+    </div>
+</header>
+
+<section class="bocations">
+{% for c in services %}
+
+    <div class="zone">
+        <h4>{{ c[1] }}</h4>
+        <ul>
+            <li>Costo: {{ c[2] }}</li>
+            <li>Periodo: {{ c[3] }}</li>
+            <li>Tipo: {{ c[4] }}</li>
+        </ul>
+    </div>
+
+{% endfor %}
+</section>
+
+{% endblock %}

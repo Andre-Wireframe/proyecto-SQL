@@ -49,3 +49,5 @@ create table if not exists reportes (
 );
 
 select * from servicios;
+select * from usuarios;
+select * from reportes;

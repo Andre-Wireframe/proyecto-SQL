@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+/* André-wireframe */
+
+@keyframes surge {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+* {
+    font-family: "Google Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    scrollbar-color: green lightgreen;
+    scrollbar-width: auto;
+    scroll-behavior: smooth;
+}
+
+.grafic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 50px 0;
+}
+
+#results-g {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-1 {
+    font-size: 25px;
+    padding: 20px 25px;
+    border-radius: 10px;
+    background-color: rgb(73, 255, 112);
+    border: 1px solid black;
+    box-shadow: 5px 5px 10px rgb(72, 227, 0);
+    transition-duration: 0.5s;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    margin: 20px 20px;
+}
+
+.button-1:hover {
+    transition-duration: 0.5s;
+    box-shadow: 5px 5px 10px rgb(208, 240, 193);
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px;
+    background: radial-gradient(rgb(17, 70, 9), rgb(42, 42, 42));
+}
+
+h1 {
+    font-size: 50px;
+    color: yellowgreen;
+    background-color: rgba(0, 0, 0, 0.112);
+    border: 1px solid yellowgreen;
+    box-shadow: 5px 5px 10px yellowgreen;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+@media (max-width: 400px) {
+    main {padding: 20px;}
+    h1 {font-size: 30px;}
+}
+
+.bocations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 100px 100px;
+    color: white;
+}
+
+.bocations h3 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: greenyellow;
+}
+
+.zone {
+    display: none;
+    background-color: rgb(38, 59, 29);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid white;
+    margin: 50px 0;
+}
+
+.zone h4 {
+    color: aquamarine;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.zone p {
+    font-size: 18px;
+    color: aqua;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.view-detail {
+    border: 0;
+    background-color: transparent;
+    color: yellowgreen;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.view-detail:hover {
+    text-decoration: underline;
+}
+
+.zone h5 {
+    font-size: 20px;
+    color: aquamarine;
+    margin-bottom: 10px;
+}
+
+.zone li {
+    margin-left: 30px;
+    color: aqua;
+    line-height: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 400px) {
+    .buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 700px) {
+    .bocations {padding: 20px;}
+}
+
+@keyframes up-and-down {
+    0% {transform: translateY(-20px);}
+    50% {transform: translateY(20px);}
+    100% {transform: translateY(-20px);}
+}
+
+footer {
+    background-color: rgb(42, 42, 42);
+    background-image: linear-gradient(90deg, rgb(45, 64, 70), transparent 2px);
+    background-size: 80px 80px;
+    height: 100vh;
+}
+
+.fot-background2 {
+    background-color: transparent;
+    background-image: linear-gradient( rgb(45, 64, 70), transparent 2px);
+    background-size: 80px 80px;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+footer h3 {
+    font-size: 70px;
+    animation: up-and-down ease-in-out 4s infinite;
+    color: aquamarine;
+    margin-bottom: 50px;
+}
+
+footer h4 {
+    font-size: 30px;
+    color: yellowgreen;
+    margin-bottom: 10px;
+}
+
+footer ul {
+    color: aqua;
+    font-size: 20px;
+}
+
+@media (max-width: 400px) {
+    footer h3 {
+        font-size: 50px;
+        margin: 40px 10px;
+    }
+}
+
+@media print {
+    h1 {
+        font-size: 30px;
+        padding: 20px;
+    }
+    h3 {
+        margin: 0;
+        font-size: 20px
+    }
+    .grafic {
+        break-after: page;
+    }
+    .bocations {
+        padding: 50px 50px;
+        break-after: auto;
+    }
+    footer {
+        display: none;
+    }
+    .button-1 {
+        display: none;
+    }
+}

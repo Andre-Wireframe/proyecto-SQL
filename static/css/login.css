@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+/* Andre-wireframe */
+
+* {
+    font-family: "Google Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    scrollbar-color: green lightgreen;
+    scrollbar-width: auto;
+    scroll-behavior: smooth;
+}
+
+main {
+    background: radial-gradient(ellipse 700px 350px at center,rgb(17, 70, 9), rgb(42, 42, 42));
+    height: 100vh;
+}
+
+.triple-back {
+    background-color: transparent;
+    background-image: linear-gradient( rgb(45, 64, 70), transparent 2px);
+    background-size: 80px 80px;
+    width: 100%;
+    height: 100%;
+}
+
+.doble-back {
+    background-color: transparent;
+    background-image: linear-gradient(90deg, rgb(45, 64, 70), transparent 2px);
+    background-size: 80px 80px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes show {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+form {
+    margin-top: 70px;
+    padding: 50px;
+    background-color: rgba(140, 255, 0, 0.116);
+    border-radius: 20px;
+    border: 1px solid yellowgreen;
+    box-shadow: 5px 5px 10px yellowgreen;
+    animation: show 2s;
+}
+
+form h3 {
+    font-size: 35px;
+    color: yellowgreen;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 25px;
+    color: aquamarine;
+}
+
+input {
+    padding: 10px;
+    font-size: 17px;
+    border-radius: 10px;
+    min-width: 260px;
+    background-color: rgba(0, 0, 0, 0.167);
+    border: 1px solid aquamarine;
+    box-shadow: 5px 5px 10px aquamarine;
+    transition-duration: 0.5s;
+    color: aqua;
+}
+
+input:focus {
+    transition-duration: 0.5s;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 5px 5px 10px rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.262);
+}
+
+@media (max-width: 500px) {
+    main {
+        height: 120vh;
+    }
+
+    form {
+        width: 230px; 
+        padding: 30px; 
+        text-align: center; 
+        box-shadow: 0px 0px 0px transparent; 
+        margin-top: 80px;
+    }
+
+    input {min-width: 200px; box-shadow: 0px 0px 0px transparent;}
+}
+
+.button-1 {
+    font-size: 18px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: rgb(73, 255, 112);
+    border: 1px solid black;
+    box-shadow: 5px 5px 10px rgb(72, 227, 0);
+    transition-duration: 0.5s;
+    text-decoration: none;
+    color: black;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.button-1:hover {
+    transition-duration: 0.5s;
+    box-shadow: 5px 5px 10px rgb(208, 240, 193);
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px 0;
+}
+
+.link {
+    color: yellowgreen;
+    text-decoration: none;
+    text-align: center;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* 01000001 01101110 01100100 01110010 01100101 00101101 01110111 01101001 01110010 01100101 01100110 01110010 01100001 01101101 01100101 */

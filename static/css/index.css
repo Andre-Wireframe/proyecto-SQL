@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+/* Andre-wireframe */
+
+* {
+    font-family: "Google Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    scrollbar-color: green lightgreen;
+    scrollbar-width: auto;
+    scroll-behavior: smooth;
+}
+
+@keyframes surge {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scroll {
+    from {
+        opacity: 0;
+        scale: 0%;
+    }
+
+    to {
+        opacity: 1;
+        scale: 100%;
+    }
+}
+
+@keyframes move-background {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 50% 0%;}
+}
+
+.button-1 {
+    font-size: 25px;
+    padding: 20px 25px;
+    border-radius: 10px;
+    background-color: rgb(73, 255, 112);
+    border: 1px solid black;
+    box-shadow: 5px 5px 10px rgb(72, 227, 0);
+    transition-duration: 0.5s;
+    text-decoration: none;
+    color: black;
+}
+
+.button-1:hover {
+    transition-duration: 0.5s;
+    box-shadow: 5px 5px 10px rgb(208, 240, 193);
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+nav {
+    background-color: rgba(34, 77, 4, 0.388);
+    color: white;
+    position: fixed;
+    width: 100vw;
+    height: 70px;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 70px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 30px;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    align-items: center;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 400px) {
+    nav a {
+        font-size: 15px;
+    }
+}
+
+header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+    color: greenyellow;
+    background-color: rgb(42, 42, 42);
+    background-image: radial-gradient(rgb(57, 255, 103), transparent 2px);
+    background-size: 40px 40px;
+    animation: move-background 30s infinite;
+}
+
+.hero {
+    margin-top: 50px;
+    animation: surge 2s;
+    background-color: rgba(0, 0, 0, 0.107);
+    padding: 50px;
+    border: 1px solid yellowgreen;
+    box-shadow: 5px 5px 10px yellowgreen;
+    border-radius: 20px;
+}
+
+h1 {
+    font-size: 70px;
+    margin: 0 10px;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.hero-buttons .button-1 {
+    margin: 0 30px;
+    animation: surge 1.5s;
+}
+
+@media (max-width: 500px) {
+    .hero {
+        padding: 30px 10px;
+        margin: 0 15px;
+    }
+    h1 {font-size: 50px;}
+    h2 {font-size: 20px;}
+    .hero-buttons {
+        flex-direction: column;
+        margin-top: 70px;
+    }
+    .hero-buttons .button-1 {margin: 20px 0;}
+    header {
+        justify-content: center;
+        height: 100vh;
+    }
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(ellipse 700px 350px at center,rgb(17, 70, 9), rgb(42, 42, 42));
+    text-align: center;
+}
+
+.about h3 {
+    font-size: 40px;
+    padding: 30px 0;
+    color: greenyellow;
+    view-timeline-name: --about;
+    view-timeline-axis: block;
+    animation-name: scroll;
+    animation-timeline: --about;
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+}
+
+.about .button-1 {
+    margin-top: 50px;
+}
+
+.about p {
+    font-size: 25px;
+    line-height: 40px;
+    max-width: 1200px;
+    margin: 0 20px;
+    color: aqua;
+    view-timeline-name: --about;
+    view-timeline-axis: block;
+    animation-name: scroll;
+    animation-timeline: --about;
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+}
+
+@media (max-width: 1000px) {
+    .about {background: radial-gradient(rgb(17, 70, 9), rgb(42, 42, 42));}
+    .about h3 {margin: 20px;}
+    .about p {font-size: 20px; line-height: 35px;}
+}
+
+@media (max-width: 400px) {
+    .about {height: 120vh;}
+}
+
+.manual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: radial-gradient(rgb(9, 10, 70), rgb(42, 42, 42));
+    padding: 100px 100px;
+    min-height: 120hv;
+}
+
+.manual h3 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: aquamarine;
+}
+
+.manual > p {
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: aqua;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    view-timeline-name: --about;
+    view-timeline-axis: block;
+    animation-name: scroll;
+    animation-timeline: --about;
+    animation-range: entry 25% cover 30%;
+    animation-fill-mode: both;
+}
+
+.container div {
+    background-color: rgb(36, 40, 52);
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid white;
+    width: 700px;
+    margin: 20px;
+}
+
+.container > p {
+    font-size: 50px;
+    color: aquamarine;
+}
+
+.container div h4 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: rgb(0, 255, 200);
+}
+
+.container div p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: rgb(117, 255, 255);
+}
+
+.container img {
+    margin-left: 40px;
+    width: 70px;
+}
+
+@media (max-width: 1050px) {
+    .container {flex-direction: column; border: 1px solid white; border-radius: 20px; margin: 20px 0;}
+    .container div {width: 500px;}
+    .container img {margin: 0;}
+}
+
+@media (max-width: 800px) {
+    .container {margin: 20px 0;}
+    .container div {width: 240px;}
+    .manual {padding: 40px 10px; text-align: center; align-items: center;}
+}
+
+.bocations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 100px 100px;
+    background: radial-gradient(rgb(14, 58, 8), rgb(42, 42, 42));
+    color: white;
+}
+
+.bocations h3 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: greenyellow;
+}
+
+.zone {
+    background-color: rgb(38, 59, 29);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid white;
+    min-width: 50vw;
+    margin: 50px 0;
+    view-timeline-name: --about;
+    view-timeline-axis: block;
+    animation-name: scroll;
+    animation-timeline: --about;
+    animation-range: entry 25% cover 40%;
+    animation-fill-mode: both;
+}
+
+.zone h4 {
+    color: aquamarine;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.zone p {
+    font-size: 18px;
+    color: aqua;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.zone a {
+    margin: 0 10px;
+    font-size: 20px;
+    color: yellowgreen;
+    text-decoration: underline;
+}
+
+.view-detail {
+    border: 0;
+    background-color: transparent;
+    color: yellowgreen;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.view-detail:hover {
+    text-decoration: underline;
+}
+
+.zone h5 {
+    font-size: 20px;
+    color: aquamarine;
+    margin-bottom: 10px;
+}
+
+@keyframes show-ul {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.zone li {
+    margin-left: 30px;
+    color: aqua;
+    line-height: 20px;
+}
+
+@media (max-width: 700px) {
+    .bocations {padding: 20px;}
+}
+
+.end-of-feet {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(42, 42, 42);
+    background-image: radial-gradient(rgb(57, 255, 103), transparent 2px);
+    background-size: 40px 40px;
+    animation: move-background 30s infinite;
+}
+
+.end-of-feet h3 {
+    font-size: 50px;
+    max-width: 900px;
+    margin-bottom: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: yellowgreen;
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px greenyellow;
+    border: 1px solid greenyellow;
+    view-timeline-name: --about;
+    view-timeline-axis: block;
+    animation-name: scroll;
+    animation-timeline: --about;
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+}
+
+@keyframes up-and-down {
+    0% {transform: translateY(-20px);}
+    50% {transform: translateY(20px);}
+    100% {transform: translateY(-20px);}
+}
+
+#last-button {
+    animation: up-and-down ease-in-out 4s infinite;
+}
+
+#last-button:hover {
+    animation-play-state: paused;
+}
+
+@media (max-width: 600px) {
+    .end-of-feet h3 {
+        font-size: 35px;
+        margin-left: 10px; 
+        margin-right: 10px;
+        padding: 25px 15px;
+        box-shadow: 0;
+    }
+}
+
+footer {
+    background-color: rgb(42, 42, 42);
+    background-image: linear-gradient(90deg, rgb(45, 64, 70), transparent 2px);
+    background-size: 80px 80px;
+    height: 100vh;
+}
+
+.fot-background2 {
+    background-color: transparent;
+    background-image: linear-gradient( rgb(45, 64, 70), transparent 2px);
+    background-size: 80px 80px;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+footer h3 {
+    font-size: 70px;
+    animation: up-and-down ease-in-out 4s infinite;
+    color: aquamarine;
+    margin-bottom: 50px;
+}
+
+footer h4 {
+    font-size: 30px;
+    color: yellowgreen;
+    margin-bottom: 10px;
+}
+
+footer ul {
+    color: aqua;
+    font-size: 20px;
+}
+
+/* 01000001 01101110 01100100 01110010 01100101 00101101 01110111 01101001 01110010 01100101 01100110 01110010 01100001 01101101 01100101 */

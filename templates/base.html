@@ -3,13 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    {% block extra_css %} {% endblock %}
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
+
+    <nav>
+        <a href="{{ url_for('index') }}"><img src="" alt="logo"></a>
+        <ul class="nav-links">
+            <a href="{{ url_for('services_get') }}" class="nav-link">Servicios</a>
+            <a href="{{ url_for('reports_get') }}" class="nav-link">Reportes</a>
+            {% if current_user.nombre %}
+                <a href="{{ url_for('logout') }}" class="nav-link">Cerrar Sesion</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="nav-link">Iniciar Sesion</a>
+            {% endif %}
+        </ul>
+    </nav>
+
     {% block content %}
     {% endblock %}
 
+     <footer>
+        <div class="fot-background2">
+            <div class="footer-box">
+                <h3>Epitacios Web!!!</h3>
+                <h4>Equipo de desarrollo:</h4>
+                <ul>
+                   <li>André-Wireframe: Programador</li>
+                   <li>Carlos-Insano: Tester</li>
+                   <li>Juanito-Alcachofa: Diseñador</li>
+                   <li>Hazel-Corporation: Desarrollador</li>
+                   <li>Santiago-Legion: Blood-Strike-Player</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% with message = get_flashed_messages(with_categories=true) %}
+        {% if message %}
+            {% for c,m in message %}
+                <script>
+                    Swal.fire({
+                        title: "{{ c }}",
+                        text: "{{ m }}",
+                        icon: "{{ c }}"
+                    });  
+                </script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    
     <script src="{{ url_for('static', filename='scripts.css') }}"></script>
 </body>
 </html>
