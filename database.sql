@@ -48,6 +48,12 @@ create table if not exists reportes (
     index (urgencia, servicio)
 );
 
+alter table reportes
+drop constraint service_fk_report,
+drop constraint user_fk_report,
+add constraint service_fk_report2 foreign key(servicio) references servicios(id) on delete cascade,
+add constraint user_fk_report2 foreign key(usuario) references usuarios(id) on delete cascade;
+
 select * from servicios;
 select * from usuarios;
 select * from reportes;

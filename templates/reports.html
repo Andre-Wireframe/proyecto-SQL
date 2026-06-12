@@ -1,38 +1,54 @@
 {% extends "base.html" %}
 
+{% block extra_css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"> {% endblock %}
+
 {% block title %} Reportes {% endblock %}
 
 {% block content %}
 
-<div class="from-add">
-    <form method="POST">
-        <h2>Agregar un reporte</h2>
-        <label for="servicio">Servicio a reportar</label><br>
-        <select name="servicio" id="servicio" required>
-            {% for s in services %}
-                <option value="{{ s[0] }}">{{ s[1] }}</option>
-            {% endfor %}
-        </select><br>
+<main>
+    <div class="triple-back">
+        <div class="doble-back">
+            <form method="POST">
+                {% if id %}
+                    <h3>Modificar: Reporte No. {{ id }}</h3>
+                {% else %}
+                    <h3>Agregar un reporte</h3>
+                {% endif %}
 
-        <label for="direccion">Direccion</label><br>
-        <input type="text" name="direccion" id="direccion" required><br>
+                <label for="servicio">Servicio a reportar</label><br>
+                <select name="servicio" id="servicio" required>
+                    {% for s in services %}
+                        <option value="{{ s[0] }}">{{ s[1] }}</option>
+                    {% endfor %}
+                </select><br><br>
 
-        <label for="urgencia">Urgencia</label><br>
-        <select name="urgencia" id="urgencia">
-            <option value="baja">Baja</option>
-            <option value="media">Media</option>
-            <option value="alta">Alta</option>
-        </select><br>
+                <label for="direccion">Direccion</label><br>
+                <input type="text" name="direccion" id="direccion" required><br><br>
 
-        <label for="descripcion">DEscripcion del susceso</label><br>
-        <textarea name="descripcion" id="descripcion" placeholder="Maximo 250 caracteres" required></textarea>
-        <small id="chars_count"></small>
+                <label for="urgencia">Urgencia</label><br>
+                <select name="urgencia" id="urgencia">
+                    <option value="baja">Baja</option>
+                    <option value="media">Media</option>
+                    <option value="alta">Alta</option>
+                </select><br><br>
 
-        <div class="botones">
-            <button class="button-generic" type="submit">Agregar</button>
-            <a class="button-generic" href="{{ url_for('index') }}">Cancelar</a>
+                <label for="descripcion">Descripcion del susceso</label><br>
+                <textarea name="descripcion" id="descripcion" placeholder="Maximo 250 caracteres" required></textarea>
+                <small id="chars_count"></small><br><br>
+
+                <div class="botones">
+                    {% if id %}
+                        <button class="button-1" type="submit">Modificar</button>
+                    {% else %}
+                        <button class="button-1" type="submit">Agregar</button>
+                    {% endif %}
+                    
+                    <a class="button-1" href="{{ url_for('index') }}">Cancelar</a>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
+    </div>
+</main>
 
 {% endblock %}

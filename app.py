@@ -238,19 +238,77 @@ def reports_del(id):
     flash("Reporte eliminado con exito", "success")
     return redirect(url_for("reports_get"))
 
-@app.route("/reports-mod/<id>/")
+@app.route("/reports-mod/<id>/", methods = ["GET", "POST"])
 @login_required
 def reports_mod(id):
+    cursor = mysql.connection.cursor()
+    context = {"id": id, "services":get_services()}
+
     if request.method == "POST":
         servicio = request.form.get("servicio")
         direccion = request.form.get("direccion")
         urgencia = request.form.get("urgencia")
         descripcion = request.form.get("descripcion")
 
-    cursor = mysql.connection.cursor()
-    cursor.execute()
+        cursor.execute("""
+            UPDATE reportes
+            SET
+                servicio = %s,
+                direccion = %s,
+                urgencia = %s,
+                descripcion = %s
+            WHERE id = %s;
+        """, (servicio, direccion, urgencia, descripcion, id))
+        mysql.connection.commit()
+        flash("Reporte modificado con exito", "success")
     
+        return redirect(url_for("reports_get"))
+    
+    return render_template("reports.html", **context)
 
+@app.route("/services_mod/<id>/", methods = ["GET", "POST"])
+@login_required
+def services_mod(id):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT nombre FROM servicios WHERE id = %s", (id,))
+    service = cursor.fetchone()
+    context = {"id": id, "service":service[0]}
+
+    if request.method == "POST":
+        nombre = request.form.get("nombre")
+        costo = request.form.get("costo")
+        periodo = request.form.get("periodo")
+        type = request.form.get("type")
+
+        cursor.execute("""
+            UPDATE servicios
+            SET
+                nombre = %s,
+                costo = %s,
+                periodo = %s,
+                type = %s
+            WHERE id = %s;
+        """, (nombre, costo, periodo, type, id))
+        mysql.connection.commit()
+        flash("Servicio modificado con exito", "success")
+    
+        return redirect(url_for("services_get"))
+    
+    return render_template("services.html", **context)
+
+@app.route("/services_del/<id>/", methods = ["POST", "GET"])
+@login_required
+def services_del(id):
+    cursor = mysql.connection.cursor()
+    cursor.execute("""
+        DELETE FROM servicios
+        WHERE id = %s;
+    """, (id,))
+
+    mysql.connection.commit()
+
+    flash("Servicio eliminado con exito", "success")
+    return redirect(url_for("services_get"))
 
 # Server run
 if __name__ == "__main__":
