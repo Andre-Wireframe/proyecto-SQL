@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_mysqldb import MySQL
 from flask_login import login_user, logout_user, UserMixin, login_required, LoginManager, current_user
 import bcrypt
+import os
 
 # Program functions
 def login_func(username, password):
@@ -97,7 +98,7 @@ def get_reports():
     return cursor.fetchall()
 
 app = Flask(__name__)
-app.secret_key = "admin123"
+app.secret_key = os.environ.get("flask_secret_key")
 
 #Login-flask
 login_manager = LoginManager()
