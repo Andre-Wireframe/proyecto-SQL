@@ -267,9 +267,9 @@ def reports_del(id):
         """, (id,))
 
         mysql.connection.commit()
-        flash("Reporte eliminado con exito", "success")
+        flash("Reporte eliminado con éxito", "success")
     else:
-        flash("Usuario no autorizado a esta operacion", "error")
+        flash("Usuario no autorizado a esta operación", "error")
 
     return redirect(url_for("reports_get"))
 
@@ -298,9 +298,9 @@ def reports_mod(id):
                 WHERE id = %s;
             """, (servicio, direccion, urgencia, descripcion, id))
             mysql.connection.commit()
-            flash("Reporte modificado con exito", "success")
+            flash("Reporte modificado con éxito", "success")
         else:
-            flash("Usuario no autorizado a esta operacion", "error")
+            flash("Usuario no autorizado a esta operación", "error")
     
         return redirect(url_for("reports_get"))
     
@@ -331,9 +331,9 @@ def services_mod(id):
                 WHERE id = %s;
             """, (nombre, costo, periodo, type, id))
             mysql.connection.commit()
-            flash("Servicio modificado con exito", "success")
+            flash("Servicio modificado con éxito", "success")
         else:
-            flash("Usuario no autorizado a esta operacion", "error")
+            flash("Usuario no autorizado a esta operación", "error")
         
         return redirect(url_for("services_get"))
     
@@ -351,9 +351,9 @@ def services_del(id):
 
         mysql.connection.commit()
 
-        flash("Servicio eliminado con exito", "success")
+        flash("Servicio eliminado con éxito", "success")
     else:
-        flash("Usuario no autorizado a esta operacion", "error")
+        flash("Usuario no autorizado a esta operación", "error")
 
     return redirect(url_for("services_get"))
 

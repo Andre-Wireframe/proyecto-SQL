@@ -25,9 +25,9 @@
             <a href="{{ url_for('services_get') }}" class="nav-link">Servicios</a>
             <a href="{{ url_for('reports_get') }}" class="nav-link">Reportes</a>
             {% if current_user.nombre %}
-                <a href="{{ url_for('logout') }}" class="nav-link">Cerrar Sesion</a>
+                <a href="{{ url_for('logout') }}" class="nav-link">Cerrar Sesión</a>
             {% else %}
-                <a href="{{ url_for('login') }}" class="nav-link">Iniciar Sesion</a>
+                <a href="{{ url_for('login') }}" class="nav-link">Iniciar Sesión</a>
             {% endif %}
         </ul>
     </nav>
