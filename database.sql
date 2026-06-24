@@ -19,6 +19,7 @@ create table if not exists usuarios (
     edad int not null,
     phone bigint,
     primary key(id),
+    type char(7) not null,
     
     index (nombre)
 );
@@ -41,6 +42,7 @@ create table if not exists reportes (
     direccion varchar(200) not null,
     urgencia varchar(50) not null,
     descripcion varchar(250) not null,
+    fecha date,
     primary key(id),
 	constraint service_fk_report foreign key(servicio) references servicios(id),
     constraint user_fk_report foreign key(usuario) references usuarios(id),
@@ -57,3 +59,11 @@ add constraint user_fk_report2 foreign key(usuario) references usuarios(id) on d
 select * from servicios;
 select * from usuarios;
 select * from reportes;
+
+drop table admins;
+
+alter table usuarios
+add column type char(7) not null;
+
+alter table reportes
+add column fecha date;

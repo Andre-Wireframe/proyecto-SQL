@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} Servicios {% endblock %}
+{% block title %} Reportes {% endblock %}
 
 {% block content %}
 
@@ -24,9 +24,12 @@
             <li>Usuario: {{ c[1] }}</li>
             <li>Direccion: {{ c[3] }}</li>
             <li>Urgencia: {{ c[4] }}</li>
+            <li>Fecha: {{ c[6] }}</li>
         </ul><br>
-        <a href="{{ url_for('reports_mod', id=c[0]) }}">Modificar</a>
-        <a href="{{ url_for('reports_del', id=c[0]) }}">Eliminar</a>
+        {% if current_user.type == "admin" or current_user.nombre == c[1] %}
+            <a href="{{ url_for('reports_mod', id=c[0]) }}">Modificar</a>
+            <a href="{{ url_for('reports_del', id=c[0]) }}">Eliminar</a>
+        {% endif %}
         <br>
     </div>
 

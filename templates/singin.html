@@ -2,7 +2,7 @@
 
 {% block extra_css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"> {% endblock %}
 
-{% block title %} Servicios {% endblock %}
+{% block title %} Registro {% endblock %}
 
 {% block content %}
 
@@ -19,13 +19,13 @@
                     <input type="text" name="edad" id="edad" required><br><br>
 
                     <label for="phone">Telefono (opcional)</label><br>
-                    <input type="text" name="phone" id="phone" required><br><br>
+                    <input type="text" name="phone" id="phone"><br><br>
 
                     <label for="password">Contraseña</label><br>
                     <input type="password" name="password" id="log-password" required><br><br>
 
                     <label for="password2">Confirmar Contraseña</label><br>
-                    <input type="text" name="password2" id="password2" required><br><br>
+                    <input type="password" name="password2" id="password2" required><br><br>
 
                 </div>
                 <div class="buttons">

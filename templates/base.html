@@ -10,8 +10,18 @@
 <body>
 
     <nav>
-        <a href="{{ url_for('index') }}"><img src="" alt="logo"></a>
-        <ul class="nav-links">
+        <div class="logo-div">
+            <a href="{{ url_for('index') }}"><img src="" alt="Logo"></a>
+            <div class="bar"></div>
+            <div class="bar bar2"></div>
+            <button type="button"><img src="" alt="menu" id="nav-but"></button>
+        </div>
+
+        <ul id="nav-ul">
+            {% if current_user.type == "admin" %}
+                <a href="{{ url_for('singin') }}" class="nav-link">Agregar admin</a>
+            {% endif %}
+            
             <a href="{{ url_for('services_get') }}" class="nav-link">Servicios</a>
             <a href="{{ url_for('reports_get') }}" class="nav-link">Reportes</a>
             {% if current_user.nombre %}
@@ -57,6 +67,6 @@
     {% endwith %}
 
     
-    <script src="{{ url_for('static', filename='scripts.css') }}"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>

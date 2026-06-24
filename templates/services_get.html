@@ -9,7 +9,9 @@
         <h1>Services</h1>
         <h2>Cecytos Web Services</h2>
     </div>
-    <a href="{{ url_for('services') }}" class="button-1">Agregar Reporte</a>
+    {% if current_user.type == "admin" %}
+        <a href="{{ url_for('services') }}" class="button-1">Agregar Reporte</a>
+    {% endif %}
 </header>
 
 <section class="bocations">
@@ -22,8 +24,10 @@
             <li>Periodo: {{ c[3] }}</li>
             <li>Tipo: {{ c[4] }}</li>
         </ul><br>
-        <a href="{{ url_for('services_mod', id=c[0]) }}">Modificar</a>
-        <a href="{{ url_for('services_del', id=c[0]) }}">Eliminar</a>
+        {% if current_user.type == "admin" %}
+            <a href="{{ url_for('services_mod', id=c[0]) }}">Modificar</a>
+            <a href="{{ url_for('services_del', id=c[0]) }}">Eliminar</a>
+        {% endif %}
         <br>
     </div>
 
