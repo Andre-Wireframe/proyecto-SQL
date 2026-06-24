@@ -43,6 +43,8 @@ def singin_func(username, password, password2, edad, phone, type):
     cursor.close()
     mysql.connection.commit()
 
+    login_func(username, password)
+
     return True
 
 def add_service(nombre, costo, periodo, type):
@@ -164,7 +166,7 @@ def login():
         password = request.form.get("password")
 
         if login_func(name, password):
-            print("succses")
+            flash("Sesión iniciada con éxito", "success")
             return redirect(url_for("index"))
         
         else:
@@ -187,6 +189,7 @@ def singin():
                 type_ = "admin"
 
         if singin_func(name, password, password2, edad, phone, type_):
+            flash("Usuario creado y sesión iniciada con éxito", "success")
             return redirect(url_for("index"))
         
         else:
