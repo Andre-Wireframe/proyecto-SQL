@@ -1,11 +1,11 @@
-# Cecytos web sistema de gestion de servicios
+# Cecytos web sistema de gestión de servicios
 
 Este sistema fue creado con la finalidad de apoyar
 a la comunidad creando un sistema gratuito donde los
 habitantes de la comunidad puedan subir sus reportes de
 múltiples servicios.
 
-El codigo esta dividido en templates, archivos estaticos
+El código esta dividido en templates, archivos estáticos
 y el app principal que es main.py, funciona con flask en el
 puerto 3030.
 

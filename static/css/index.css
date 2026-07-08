@@ -118,7 +118,9 @@ nav button {
         justify-content: center;
     }
     nav button {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     nav ul {
         display: none;
