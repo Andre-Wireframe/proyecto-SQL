@@ -18,6 +18,9 @@
                     <label for="password">Contraseña</label><br>
                     <input type="password" name="password" id="log-password" required><br><br>
 
+                    <input id="check" name="check" type="checkbox">
+                    <label for="check"> Mostrar Contraseña</label><br>
+
                 </div>
                 <div class="buttons">
                     <button type="submit" class="button-1">Enviar</button>
@@ -28,5 +31,7 @@
         </div>
     </div>
 </main>
+
+<script src="{{ url_for('static', filename='log_script.js') }}"></script>
 
 {% endblock %}
